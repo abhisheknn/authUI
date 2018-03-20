@@ -7,9 +7,7 @@ pipeline {
    stages {
 	     stage('Build') {
             steps {
-              sh ''' cd auth
-                     mvn install -X
-                 '''
+              sh 'mvn install'
             }
         }
      stage('Push image') {
