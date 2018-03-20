@@ -22,7 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-	<docker.image.prefix>abhisheknn</docker.image.prefix>
+	<docker.image.prefix>registry.hub.docker.com/abhisheknn</docker.image.prefix>
     </properties>
 
     <dependencies>
