@@ -17,7 +17,7 @@ pipeline {
          * Pushing multiple tags is cheap, as all the layers are reused. */
        steps {
          script {
-        docker.withRegistry('https://registry.hub.docker.com') {
+        docker.withRegistry('https://registry.hub.docker.com','dockerhubcredentials') {
             def authImage = docker.image("registry.hub.docker.com/abhisheknn/auth:latest")
              authImage.push()
         }
