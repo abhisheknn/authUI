@@ -1,3 +1,6 @@
-auth
+# Architecture
 
-![alt tag] (ProjectFlow.png "Authorization and Authentication Flow")
+## Auth FLow Diagram
+
+![Blockdiagram](./ProjectFlow.png)
+
