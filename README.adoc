@@ -1,3 +1,0 @@
-= Authoriztion and Authentication UI 
-
-![alt text] (https://raw.githubusercontent.com/abhisheknn/authUI/master/ProjectFlow.png)
