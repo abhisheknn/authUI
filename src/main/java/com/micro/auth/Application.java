@@ -1,4 +1,4 @@
-package com.nfactorial.auth;
+package com.micro.auth;
 
 import java.security.Principal;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.nfactorial.auth.util.KeyProvider;
+import com.micro.auth.util.KeyProvider;
 
 
 @SpringBootApplication

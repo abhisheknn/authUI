@@ -1,4 +1,4 @@
-package com.nfactorial.auth;
+package com.micro.auth;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
