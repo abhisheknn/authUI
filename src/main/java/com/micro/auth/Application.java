@@ -1,14 +1,16 @@
-package com.nfactorial.demo;
+package com.micro.auth;
 
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,10 +22,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.micro.auth.util.KeyProvider;
+
+
 @SpringBootApplication
 @Controller
-public class DemoApplication {
+public class Application {
 
+	@Autowired
+	KeyProvider keyProvider;
+	
   @GetMapping("/resource")
   @ResponseBody
   public Map<String, Object> home() {
@@ -45,7 +53,8 @@ public class DemoApplication {
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(DemoApplication.class, args);
+	  ConfigurableApplicationContext context =SpringApplication.run(Application.class, args);
+	  context.getBean(KeyProvider.class).createAndStoreCert("cn=unknown", "servercert");
   }
 }
 
@@ -72,7 +81,7 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 @Component
 @ConfigurationProperties("demo")
-class DemoProperties {
+class ApplicationProperties {
   private String value;
 
 public String getValue() {

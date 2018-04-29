@@ -3,4 +3,12 @@ security:
     name: admin
     password: pwd
   ignored:
-  - "*.bundle.*" 
+  - "*.bundle.*"
+server:
+  port: 9443
+  ssl:
+    enabled: true
+    key-alias: jwtsigningkey
+    key-store: "keyserverstore.keystore"
+    key-store-password: wintermore
+    key-password: wintermore
