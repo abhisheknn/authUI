@@ -1,9 +1,6 @@
 security:
-  user:
-    name: admin
-    password: pwd
   ignored:
-  - "*.bundle.*"
+     - "*.bundle.*"
 server:
   port: 9443
   ssl:
@@ -12,3 +9,5 @@ server:
     key-store: "keyserverstore.keystore"
     key-store-password: wintermore
     key-password: wintermore
+jwt:
+  authserverPath:https://localhost:8585
