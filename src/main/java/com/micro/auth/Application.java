@@ -46,13 +46,7 @@ public class Application {
   public Principal user(Principal user) {
     return user;
   }
-  
-  @GetMapping(value = "/{path:[^\\.]*}")
-  public String redirect() {
-    return "forward:/";
-  }
-
-  public static void main(String[] args) {
+ public static void main(String[] args) {
 	  ConfigurableApplicationContext context =SpringApplication.run(Application.class, args);
 	  //context.getBean(KeyProvider.class).createAndStoreCert("cn=unknown", "servercert");
   }

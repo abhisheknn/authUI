@@ -16,8 +16,10 @@ export class AppService {
             authorization : 'Basic ' + btoa(credentials.username + ':' + credentials.password)
         } : {});
 
-        this.http.get('user', {headers: headers}).subscribe(response => {
-            if (response['name']) {
+        this.http.post('http://localhost:8252/authserver/login',
+        {userName:credentials.username,password:credentials.password}).subscribe(response => {
+            if (response) {
+                localStorage.setItem("jwToken",response['entity']);
                 this.authenticated = true;
             } else {
                 this.authenticated = false;
@@ -26,5 +28,20 @@ export class AppService {
         });
 
     }
+
+     register(credentials, callback) {
+        this.http.post('http://localhost:8252/authserver/register',
+        {userName:credentials.username,password:credentials.password}).subscribe(response => {
+            if (response) {
+                console.log(response);
+                this.authenticated = true;
+            } else {
+                this.authenticated = false;
+            }
+            return callback && callback();
+        });
+
+    }
+
 
 }

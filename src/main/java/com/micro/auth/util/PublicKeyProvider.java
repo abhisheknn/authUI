@@ -1,4 +1,4 @@
-package com.micro.auth.filter;
+package com.micro.auth.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +15,7 @@ public class PublicKeyProvider {
 	private String authServerPath;
 	
 	public String getPublicKey() {
-		return keyProviderUtil.getPublicKeyFrmServer("https://localhost:8222");
+		String result =keyProviderUtil.getPublicKeyFrmServer("http://localhost:8252");
+		return result;
 	}
 }

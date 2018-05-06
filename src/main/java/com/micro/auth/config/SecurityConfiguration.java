@@ -30,7 +30,7 @@ protected void configure(HttpSecurity httpSecurity) throws Exception {
 	httpSecurity
 	.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 	.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-	.authorizeRequests().antMatchers("/index.html", "/", "/home", "/login").permitAll()
+	.authorizeRequests()
 	.anyRequest().authenticated().and()
 	.csrf()
     .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
@@ -43,7 +43,7 @@ protected void configure(HttpSecurity httpSecurity) throws Exception {
 public void configure(WebSecurity webSecurity) throws Exception {
 	webSecurity
 	.ignoring()
-	.antMatchers("/index.html", "/", "/home", "/login","/*.html",
+	.antMatchers("/index.html", "/","/register", "/home", "/login","/*.html",
             "/favicon.ico",
             "/**/*.html",
             "/**/*.css",

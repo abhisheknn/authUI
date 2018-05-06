@@ -16,6 +16,7 @@ export class AppComponent {
     logout() {
       this.http.post('logout', {}).finally(() => {
           this.app.authenticated = false;
+          localStorage.setItem('jwToken', '');
           this.router.navigateByUrl('/login');
       }).subscribe();
     }
