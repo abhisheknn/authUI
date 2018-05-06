@@ -40,43 +40,17 @@ public class Application {
     model.put("content", "Hello World");
     return model;
   }
-
+ 
   @RequestMapping("/user")
   @ResponseBody
   public Principal user(Principal user) {
     return user;
   }
-  
-  @GetMapping(value = "/{path:[^\\.]*}")
-  public String redirect() {
-    return "forward:/";
-  }
-
-  public static void main(String[] args) {
+ public static void main(String[] args) {
 	  ConfigurableApplicationContext context =SpringApplication.run(Application.class, args);
-	  context.getBean(KeyProvider.class).createAndStoreCert("cn=unknown", "servercert");
+	  //context.getBean(KeyProvider.class).createAndStoreCert("cn=unknown", "servercert");
   }
 }
-
-
-@Configuration
- @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER) 
-class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-      http
-        .httpBasic()
-      .and()
-        .authorizeRequests()
-          .antMatchers("/index.html", "/", "/home", "/login").permitAll()
-          .anyRequest()
-          .authenticated()
-          .and()
-          .csrf()
-          .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-          
-    }
-  }
 
 
 @Component
