@@ -1,6 +1,9 @@
 sudo apt-get install nginx
 sudo gedit /etc/nginx/nginx.conf
 
+#include /etc/nginx/conf.d/*.conf;
+#include /etc/nginx/sites-enabled/*;
+
 Add following in http directive :
 
 server {
@@ -10,6 +13,6 @@ server {
     			}
 
   	    location /authserver {
-        	proxy_pass http://kubeapi:32655;
+        	proxy_pass http://kubeapi:32655/authserver;
    		 }	   
 	}
