@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -15,8 +14,8 @@ export class AppService {
         const headers = new HttpHeaders(credentials ? {
             authorization : 'Basic ' + btoa(credentials.username + ':' + credentials.password)
         } : {});
-
-        this.http.post('http://localhost:8252/authserver/login',
+	const authserver="../authserver/";
+        this.http.post(authserver+'login',
         {userName:credentials.username,password:credentials.password}).subscribe(response => {
             if (response) {
                 localStorage.setItem("jwToken",response['entity']);
@@ -30,7 +29,8 @@ export class AppService {
     }
 
      register(credentials, callback) {
-        this.http.post('http://localhost:8252/authserver/register',
+	const authserver="../authserver/";
+        this.http.post(authserver+'register',
         {userName:credentials.username,password:credentials.password}).subscribe(response => {
             if (response) {
                 console.log(response);
