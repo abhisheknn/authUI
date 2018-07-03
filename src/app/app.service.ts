@@ -14,7 +14,7 @@ export class AppService {
         const headers = new HttpHeaders(credentials ? {
             authorization : 'Basic ' + btoa(credentials.username + ':' + credentials.password)
         } : {});
-	const authserver="../authserver/";
+	const authserver="../user/";
         this.http.post(authserver+'login',
         {userName:credentials.username,password:credentials.password}).subscribe(response => {
             if (response) {
@@ -29,7 +29,7 @@ export class AppService {
     }
 
      register(credentials, callback) {
-	const authserver="../authserver/";
+	const authserver="../user/";
         this.http.post(authserver+'register',
         {userName:credentials.username,password:credentials.password}).subscribe(response => {
             if (response) {
